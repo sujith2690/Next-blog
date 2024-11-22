@@ -28,7 +28,6 @@ const LoginPage = () => {
         onSubmit: async (values, actions) => {
             setLoading(true)
             try {
-                console.log(values, '----------values')
                 const response = await axios.post("/api/users/login", values);
                 if (response.data.success) {
                     toast.success(response.data.message);
@@ -48,7 +47,7 @@ const LoginPage = () => {
         <div className='flex items-center justify-center  h-full '>
             <div className='bg-gray-800 p-3 rounded-xl md:space-y-4 w-[500px]'>
                 <div className='md:p-3'>
-                    <h2 className='text-4xl text-center'>Login</h2>
+                    <h2 className='text-xl md:text-4xl text-center'>Login</h2>
                 </div>
                 <div className='p-2'>
                     <form onSubmit={handleSubmit} className='grid gap-5 ' >

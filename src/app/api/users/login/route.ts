@@ -11,13 +11,10 @@ export async function POST(request: NextRequest) {
         const reqBody = await request.json()
         const { email, password } = reqBody
         // validation
-        console.log(reqBody, '-----body data')
-
         const user = await userModel.findOne({ email })
         if (!user) {
             return NextResponse.json({ message: "User Not found", success: false, }, { status: 401 })
         }
-        console.log('user exist', user)
         const validity = await bcrypt.compare(password, user.password);
         if (!validity) {
             return NextResponse.json({ message: "Check your credentials",success: false, }, { status: 401 })

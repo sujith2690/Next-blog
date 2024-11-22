@@ -32,7 +32,6 @@ const SignUpPage = () => {
             setLoading(false)
             try {
                 const response = await axios.post("/api/users/signUp", values);
-                console.log(response.data, '-------------response.data')
                 if (response.data.success) {
                     toast.success(response.data.message);
                     router.push('/')
