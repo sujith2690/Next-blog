@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
                 expiresIn: '24h'
             })
             const { password, createdAt, ...userDetails } = user._doc;
-            const response = NextResponse.json({ message: 'User Registered Successfully', success: true, userDetails })
+            const response = NextResponse.json({ message: 'Login Successfully', success: true, userDetails })
             response.cookies.set('token', token, {
                 httpOnly: true
             })
