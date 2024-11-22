@@ -15,12 +15,12 @@ export async function POST(request: NextRequest) {
 
         const user = await userModel.findOne({ email })
         if (!user) {
-            return NextResponse.json({ error: "User Not found" }, { status: 400 })
+            return NextResponse.json({ message: "User Not found", success: false, }, { status: 401 })
         }
         console.log('user exist', user)
         const validity = await bcrypt.compare(password, user.password);
         if (!validity) {
-            return NextResponse.json({ error: "Check your credentials" }, { status: 400 })
+            return NextResponse.json({ message: "Check your credentials",success: false, }, { status: 401 })
         } else {
 
             const tokenData = {

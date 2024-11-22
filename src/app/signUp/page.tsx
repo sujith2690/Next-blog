@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import LoadingIcon from "../components/LoadingIcon";
+import Link from "next/link";
 
 
 const SignUpPage = () => {
@@ -49,10 +50,10 @@ const SignUpPage = () => {
         <div className='flex items-center justify-center  h-full '>
             <div className='bg-gray-800 p-3 rounded-xl md:space-y-4 w-[500px]'>
                 <div className='md:p-3'>
-                    <h2 className='text-4xl text-center'>SignUp</h2>
+                    <h2 className='text-xl md:text-4xl text-center'>SignUp</h2>
                 </div>
                 <div className='p-2'>
-                    <form onSubmit={handleSubmit} className='grid gap-5 ' >
+                    <form onSubmit={handleSubmit} className='grid gap-3 md:gap-5 ' >
                         <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
                             <div>
                                 <label htmlFor="userName" className='text-sm md:text-sm'>Name</label>
@@ -62,7 +63,7 @@ const SignUpPage = () => {
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                 />
-                                <span className="text-red-600 text-sm h-5 block">
+                                <span className="text-red-600 text-sm h-3 md:h-5 block">
                                     {errors.userName && touched.userName ? errors.userName : ""}
                                 </span>
                             </div >
@@ -74,7 +75,7 @@ const SignUpPage = () => {
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                 />
-                                <span className="text-red-600 text-sm h-5 block">
+                                <span className="text-red-600 text-sm h-3 md:h-5 block">
                                     {errors.email && touched.email ? errors.email : ""}
                                 </span>
                             </div>
@@ -90,7 +91,7 @@ const SignUpPage = () => {
                                         {!show ? <FaEye /> : <FaEyeSlash />}
                                     </div>
                                 </div>
-                                <span className="text-red-600 text-sm h-5 block">
+                                <span className="text-red-600 text-sm h-3 md:h-5 block">
                                     {errors.password && touched.password ? errors.password : ""}
                                 </span>
                             </div>
@@ -107,21 +108,22 @@ const SignUpPage = () => {
                                         {!show ? <FaEye /> : <FaEyeSlash />}
                                     </div>
                                 </div>
-                                <span className="text-red-600 text-sm h-5 block">
+                                <span className="text-red-600 text-sm h-3 md:h-5 block">
                                     {errors.confirmPassword && touched.confirmPassword ? errors.confirmPassword : ""}
                                 </span>
                             </div>
                         </div>
                         <div className='space-y-1 md:space-y-3'>
-                            <div className=' flex items-center justify-center'>
+                            <div className=' space-y-1'>
                                 <button type={loading ? "submit" : "button"} className='bg-gray-600 w-full p-2 text-center transition duration-300 hover:bg-gray-900 rounded-md px-4'>
                                     {loading ? "Register" : <span className="flex justify-center"><LoadingIcon /></span>}
                                 </button>
+                                <p className='text-center text-sm'>Already have an account <span className='underline transition duration-300 hover:text-blue-700'><Link href="/login">Click here</Link></span> </p>
                             </div>
                             <p className='text-center'>Or</p>
                             <hr />
-                            <div className="flex items-center justify-center w-full cursor-pointer py-4 mb-6 text-sm font-medium transition duration-300 rounded-2xl text-grey-900 bg-gray-600 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300">
-                                <img className="h-5 mr-2" src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png" alt="" />
+                            <div className="flex items-center justify-center w-full cursor-pointer py-4 mb-6 text-sm font-medium transition duration-300 rounded-2xl text-grey-900 bg-gray-600 hover:bg-gray-900">
+                                <img className="h-3 md:h-5 mr-2" src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png" alt="" />
                                 Sign in with Google
                             </div>
                         </div>
